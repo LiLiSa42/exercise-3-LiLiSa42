@@ -8,6 +8,13 @@ h1 {
 /* Constrain the page to the viewport */
 html, body {
   height: 100vh;
+  margin: 0;
+}
+
+/* Remove unnecessary space from body */
+body {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Center the nav's header and list */
@@ -30,22 +37,99 @@ ul {
 }
 
 /* Task 2.1. Lay out the childs of the 'body' using Grid Template Areas. */
+@media (min-width: 768px) {
+  body {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "h h"
+      "n m"
+      "f f";
+  }
+  
+  header {
+    grid-area: h;
+  }
+  
+  nav {
+    grid-area: n;
+  }
+  
+  main {
+    grid-area: m;
+    overflow-y: auto;
+  }
+  
+  footer {
+    grid-area: f;
+  }
+}
 
+/* Mobile-first stack layout (default) */
+@media (max-width: 767px) {
+  body {
+    flex-direction: column;
+  }
+  
+  header {
+    order: 1;
+  }
+  
+  nav {
+    order: 2;
+  }
+  
+  main {
+    order: 3;
+    flex: 1;
+    overflow-y: auto;
+  }
+  
+  footer {
+    order: 4;
+  }
+}
 
 /* Task 3.1. Make the header element a flex container and center its children
    vertically and horizontally.
  */
-
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /* Task 3.2. Make the list items of the unordered list in the nav element a flex container, 
    use column direction and center the child items
  */
+nav ul {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  gap: 8px;
+}
 
 /* Task 3.3. Make the main element a Flexbox container */
+main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+  align-content: flex-start;
+}
 
+main article {
+  flex: 1 1 250px;
+}
 
 /* Task 3.4. Make the footer's ul a Flexbox container */
-
+footer ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 /* From here on styling from exercise 1 */
 img {
